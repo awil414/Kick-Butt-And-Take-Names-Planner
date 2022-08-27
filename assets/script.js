@@ -4,16 +4,16 @@ $("#currentDay").text(today);
 
 //Color time blocks and start interval to re-color every minute
 colorTimeBlocks();
-//setInterval(colorTimeBlocks, 1000);
+//setInterval(today, 1000);
 
 function colorTimeBlocks() {
     // For the time-block string, parse each into objects using JSON and moment.js
     $(".time-block").each(function() {
-        var blockHour = parseInt($(this).attr("id").replace("hour-", ""));
+        var blockHour = parseInt($(this).attr("id").replace("hour-", " "));
         var currentHour = parseInt(moment().format("H"));
     // Remove any previously added classes
     $(this).removeClass("past present future");
-    // Color the time-blocks based on past, present, future class
+    // Color the time-blocks by adding classes: past, present, future class
     if (blockHour < currentHour) {
         $(this).addClass("past");
         } else if (blockHour > currentHour) {
