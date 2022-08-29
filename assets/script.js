@@ -34,7 +34,7 @@ $("time-block").each(function() {
 $("saveBtn").on("click", handleSave);
 $("saveBtn").click(function() {
     alert("Note saved!");
-    var SaveBtnValue = $(this).val();
+    var SaveBtnValue = $(this).value();
     localStorage.setItem(SaveBtnValue, "description");
 
 });
@@ -46,8 +46,23 @@ function handleSave(event) {
     localStorage.setItem(moment().format("dddd, MMM Do") + hourId, $("#" +hourId +"textarea").val());
 }
 
+/*
+var userNote = $("description").val();
+localStorage.setItem("description", userNote.val());
 
-//Function to get stored notes and and load them 
+var storedNotes = localStorage.getItem("userNote");
+
+/*
+$('#Id').val() instead of document.getElementById('Id').value
+var description = $(".description").val();
+    if (window.localStorage["DescriptionData"]) {
+            description.value = window.localStorage["DescriptionData"];
+    }    
+    saveBtn.addEventListener("click", function() {
+    window.localStorage["DescriptionData"] = description.value;
+    });
+*/
+    //Function to get stored notes and and load them 
 function getStoredData() {
 
 }
