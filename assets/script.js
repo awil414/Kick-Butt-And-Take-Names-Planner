@@ -1,13 +1,13 @@
 // Use Moment.js to show current date and function to display in header
-let today = moment().format('dddd, MMM Do');
+let today = moment().format("dddd, MMM Do");
 $("#currentDay").text(today);
 
-//Color time blocks and start interval to re-color every minute
+//Color time blocks and start setInterval to update every five seconds
 colorTimeBlocks();
-//setInterval(today, 1000);
+setInterval(colorTimeBlocks, 5000);
 
 function colorTimeBlocks() {
-    // For the time-block string, parse each into objects using JSON and moment.js
+    // For the time-block string, parse, and use moment.js
     $(".time-block").each(function() {
         var blockHour = parseInt($(this).attr("id").replace("hour-", " "));
         var currentHour = parseInt(moment().format("H"));
@@ -24,5 +24,35 @@ function colorTimeBlocks() {
     });
 }
 
+// Function to update time blocks with user's input/notes in local storage
+$("time-block").each(function() {
+    var timeBlockId = this.id;
+    $("#" + timeBlockId + "textarea") + text(localStorage.getItem(moment().format("dddd, MMM Do") + timeBlockId));
+});
+
+// Function to save notes into user's local storage
+$("saveBtn").on("click", handleSave);
+$("saveBtn").click(function() {
+    alert("Note saved!");
+    var SaveBtnValue = $(this).val();
+    localStorage.setItem(SaveBtnValue, "description");
+
+});
+
+function handleSave(event) {
+    // get the id of our parent
+    var hourId = this.parent.id;
+    // save the text area notes in local storage
+    localStorage.setItem(moment().format("dddd, MMM Do") + hourId, $("#" +hourId +"textarea").val());
+}
 
 
+//Function to get stored notes and and load them 
+function getStoredData() {
+
+}
+
+// Function to clear user's data/note history and restore to default
+function clearDataHistory () {
+
+}
