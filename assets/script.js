@@ -37,7 +37,7 @@ function colorTimeBlocks() {
 $(".saveBtn").on("click", function(event) {
     var timeBlockText = (event.currentTarget.previousElementSibling.value);
     var timeBlockId = (event.currentTarget.parentElement.id);
-    // Created a data bundle to add to local storage so that date is logged for if statement above (clearing any data that doesn't correspond to current date)
+    // Created a data bundle to add to local storage so that date is logged for if statement above a(clearing any data that doesn't correspond to current date)
     var noteData = {
         text: timeBlockText, 
         date: today
