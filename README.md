@@ -6,5 +6,6 @@
 
  As the user clicks into a time block, they can enter an event and save it. Upon saving, the text input for that event is stored in local storage and will persist upon refreshing the page.
 
-# There is an added feature to this app, wherein if the local storage value doesn't equal the current date, the note will not persist. This additional convenience allows the user to have a "clean" and dynamic planner on subsequent dates and without the need to delete prior note input.
+There is an added feature to this app, wherein if the local storage value doesn't equal the current date, the note will not persist. This additional convenience allows the user to have a "clean" and dynamic planner on subsequent dates and without the need to delete prior note input.
 
+URL: https://awil414.github.io/Workday-Interactive-Planner/
