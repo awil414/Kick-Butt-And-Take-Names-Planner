@@ -2,18 +2,18 @@
 let today = moment().format("dddd, MMM Do");
 $("#currentDay").text(today);
 
-//Color time blocks and start setInterval to update every five seconds
+//Color time blocks and start setInterval to update time blocks every minute
 colorTimeBlocks();
 setInterval(colorTimeBlocks, 5000);
 
 function colorTimeBlocks() {
-    // For the time-block string, parse, and use moment.js
+    // For the time block string, parse, and use moment.js
     $(".time-block").each(function() {
         var blockHour = parseInt($(this).attr("id").replace("hour-", " "));
         var currentHour = parseInt(moment().format("H"));
     // Remove any previously added classes
     $(this).removeClass("past present future");
-    // Color the time-blocks by adding classes: past, present, future class
+    // Color the time blocks by adding classes: past, present, future class
     if (blockHour < currentHour) {
         $(this).addClass("past");
         } else if (blockHour > currentHour) {
@@ -21,53 +21,27 @@ function colorTimeBlocks() {
         } else {
         $(this).addClass("present");
         }
+        // Create vars and if statements to have app's text area value not appear if it doesn't match current date
+        var textArea = $(this).find("textarea");
+        if (localStorage.getItem($(this).attr("id"))) {
+            // Parse back into an object for text and date and save only if equal to current date
+        var savedText = JSON.parse(localStorage.getItem($(this).attr("id"))).text;
+        var savedDate = JSON.parse(localStorage.getItem($(this).attr("id"))).date;
+        if (savedDate == today){
+            textArea.val(savedText);
+        }}
     });
 }
 
-// Function to update time blocks with user's input/notes in local storage
-$("time-block").each(function() {
-    var timeBlockId = this.id;
-    $("#" + timeBlockId + "textarea") + text(localStorage.getItem(moment().format("dddd, MMM Do") + timeBlockId));
+// Event handler for saving the current text area value, and setting it to local storage
+$(".saveBtn").on("click", function(event) {
+    var timeBlockText = (event.currentTarget.previousElementSibling.value);
+    var timeBlockId = (event.currentTarget.parentElement.id);
+    // Created a data bundle to add to local storage so that date is logged for if statement above (clearing any data that doesn't correspond to current date)
+    var noteData = {
+        text: timeBlockText, 
+        date: today
+    }
+    // Using JSON to stringify noteData variable into local storage
+    localStorage.setItem(timeBlockId, JSON.stringify(noteData));
 });
-
-// Function to save notes into user's local storage
-$("saveBtn").on("click", handleSave);
-$("saveBtn").click(function() {
-    alert("Note saved!");
-    var SaveBtnValue = $(this).value();
-    localStorage.setItem(SaveBtnValue, "description");
-
-});
-
-function handleSave(event) {
-    // get the id of our parent
-    var hourId = this.parent.id;
-    // save the text area notes in local storage
-    localStorage.setItem(moment().format("dddd, MMM Do") + hourId, $("#" +hourId +"textarea").val());
-}
-
-/*
-var userNote = $("description").val();
-localStorage.setItem("description", userNote.val());
-
-var storedNotes = localStorage.getItem("userNote");
-
-/*
-$('#Id').val() instead of document.getElementById('Id').value
-var description = $(".description").val();
-    if (window.localStorage["DescriptionData"]) {
-            description.value = window.localStorage["DescriptionData"];
-    }    
-    saveBtn.addEventListener("click", function() {
-    window.localStorage["DescriptionData"] = description.value;
-    });
-*/
-    //Function to get stored notes and and load them 
-function getStoredData() {
-
-}
-
-// Function to clear user's data/note history and restore to default
-function clearDataHistory () {
-
-}
