@@ -8,7 +8,11 @@
 
 There is an added feature to this app, wherein if the local storage value doesn't equal the current date, the note will not persist. This additional convenience allows the user to have a "clean" and dynamic planner on subsequent dates and without the need to delete prior note input.
 
+<<<<<<< HEAD
 ## Link
+=======
+# Link
+>>>>>>> f29d6917f240e4f65e9bea609fd2a60ffa08434e
 URL: https://awil414.github.io/Workday-Interactive-Planner/
 
 ![Application Image](.assets/images/Work_Day_Scheduler.png)
