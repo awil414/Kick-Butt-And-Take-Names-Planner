@@ -12,3 +12,4 @@ There is an added feature to this app, wherein if the local storage value doesn'
 
 URL: https://awil414.github.io/Workday-Interactive-Planner/
 
+<img width="1280" alt="Work_Day_Scheduler" src="https://user-images.githubusercontent.com/109228469/187694069-99fc8625-53fc-4572-bf0f-fe8998488f8e.png">
